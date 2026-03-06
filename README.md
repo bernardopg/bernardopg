@@ -4,6 +4,8 @@
 
 <p align="center">
   <a href="https://www.bebitterbebetter.com.br/"><img src="https://img.shields.io/badge/Portfolio-bebitterbebetter.com.br-0F766E?style=for-the-badge&logo=firefoxbrowser&logoColor=white" alt="Portfolio" /></a>
+  <a href="https://github.com/sponsors/bernardopg"><img src="https://img.shields.io/badge/Sponsor-Open%20Source%20Work-E11D48?style=for-the-badge&logo=githubsponsors&logoColor=white" alt="Sponsor" /></a>
+  <a href="https://www.linkedin.com/in/bernardopg/"><img src="https://img.shields.io/badge/LinkedIn-bernardopg-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
   <a href="mailto:bernardo.gomes@bebitterbebetter.com.br"><img src="https://img.shields.io/badge/Email-bernardo.gomes%40bebitterbebetter.com.br-1F2937?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
   <a href="https://github.com/bernardopg"><img src="https://img.shields.io/badge/GitHub-bernardopg-111827?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" /></a>
   <img src="https://img.shields.io/badge/Based%20in-Brazil-F59E0B?style=for-the-badge&logo=googlemaps&logoColor=white" alt="Based in Brazil" />
@@ -20,6 +22,8 @@
   <a href="#english">English</a> •
   <a href="#focus-areas--areas-de-foco">Focus Areas</a> •
   <a href="#featured-work--projetos-em-destaque">Featured Work</a> •
+  <a href="#support-my-work--apoie-meu-trabalho">Support</a> •
+  <a href="#elsewhere--redes">Elsewhere</a> •
   <a href="#contact--contato">Contact</a>
 </p>
 
@@ -63,6 +67,24 @@ I care about software that feels intentional:
 
 **Also shipping / Também construindo:** [`dms-adguard-vpn-plugin`](https://github.com/bernardopg/dms-adguard-vpn-plugin), [`dolphin-servicemenus`](https://github.com/bernardopg/dolphin-servicemenus), [`mymediaplayer`](https://github.com/bernardopg/mymediaplayer), [`steam-idler-python`](https://github.com/bernardopg/steam-idler-python).
 
+## Support My Work / Apoie Meu Trabalho
+
+If my work is useful to you, sponsoring helps me spend more time building open-source tools, polished frontend products, Linux-native experiments, and automation that solves real workflows.
+
+<p align="center">
+  <a href="https://github.com/sponsors/bernardopg"><img src="https://img.shields.io/badge/GitHub%20Sponsors-Support%20bernardopg-E11D48?style=for-the-badge&logo=githubsponsors&logoColor=white" alt="Support on GitHub Sponsors" /></a>
+</p>
+
+## Elsewhere / Redes
+
+<p align="center">
+  <a href="https://www.linkedin.com/in/bernardopg/"><img src="https://img.shields.io/badge/LinkedIn-bernardopg-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
+  <a href="https://www.instagram.com/be.pgomes/"><img src="https://img.shields.io/badge/Instagram-be.pgomes-C13584?style=flat-square&logo=instagram&logoColor=white" alt="Instagram" /></a>
+  <a href="https://x.com/cooldeflecha"><img src="https://img.shields.io/badge/X-cooldeflecha-111827?style=flat-square&logo=x&logoColor=white" alt="X" /></a>
+  <a href="https://vm.tiktok.com/ZMjE479hG"><img src="https://img.shields.io/badge/TikTok-Open%20profile-111827?style=flat-square&logo=tiktok&logoColor=white" alt="TikTok" /></a>
+  <a href="https://bznkng9.wordpress.com"><img src="https://img.shields.io/badge/WordPress-bznkng9-21759B?style=flat-square&logo=wordpress&logoColor=white" alt="WordPress" /></a>
+</p>
+
 ## Toolbox / Ferramentas
 
 <p align="center">
@@ -97,6 +119,8 @@ I care about software that feels intentional:
 
 <p align="center">
   <a href="https://www.bebitterbebetter.com.br/"><img src="https://img.shields.io/badge/Website-Visit%20Portfolio-0F766E?style=for-the-badge&logo=firefoxbrowser&logoColor=white" alt="Website" /></a>
+  <a href="https://github.com/sponsors/bernardopg"><img src="https://img.shields.io/badge/Sponsor-Back%20my%20work-E11D48?style=for-the-badge&logo=githubsponsors&logoColor=white" alt="Sponsor" /></a>
+  <a href="https://www.linkedin.com/in/bernardopg/"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
   <a href="mailto:bernardo.gomes@bebitterbebetter.com.br"><img src="https://img.shields.io/badge/Email-Let%27s%20talk-1F2937?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
   <a href="https://www.instagram.com/be.pgomes/"><img src="https://img.shields.io/badge/Instagram-be.pgomes-C13584?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram" /></a>
 </p>
