@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="420" viewBox="0 0 860 420" role="img" aria-labelledby="title desc">
+  <title id="title">Language metrics placeholder</title>
+  <desc id="desc">Placeholder card shown until GitHub Actions renders live language metrics.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#111827" />
+      <stop offset="100%" stop-color="#1f2937" />
+    </linearGradient>
+  </defs>
+  <rect width="860" height="420" rx="24" fill="url(#bg)" />
+  <rect x="24" y="24" width="812" height="372" rx="18" fill="#020617" stroke="#334155" />
+  <text x="48" y="96" fill="#f8fafc" font-family="Arial, sans-serif" font-size="30" font-weight="700">Generating language breakdown...</text>
+  <text x="48" y="150" fill="#94a3b8" font-family="Arial, sans-serif" font-size="22">This card will soon show the most used and recently used languages.</text>
+  <text x="48" y="212" fill="#e2e8f0" font-family="Arial, sans-serif" font-size="20">Profile stack already detected:</text>
+  <text x="48" y="252" fill="#94a3b8" font-family="Arial, sans-serif" font-size="18">- JavaScript, TypeScript, Python, Shell</text>
+  <text x="48" y="286" fill="#94a3b8" font-family="Arial, sans-serif" font-size="18">- QML, Haskell, C, HTML and more</text>
+  <text x="48" y="320" fill="#94a3b8" font-family="Arial, sans-serif" font-size="18">- rendered automatically with lowlighter/metrics</text>
+</svg>

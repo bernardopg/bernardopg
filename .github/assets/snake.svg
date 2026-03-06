@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="180" viewBox="0 0 860 180" role="img" aria-labelledby="title desc">
+  <title id="title">Contribution snake placeholder</title>
+  <desc id="desc">Placeholder shown until the contribution snake animation is generated.</desc>
+  <rect width="860" height="180" rx="24" fill="#f8fafc" />
+  <rect x="24" y="24" width="812" height="132" rx="18" fill="#ecfeff" stroke="#99f6e4" />
+  <text x="48" y="84" fill="#0f172a" font-family="Arial, sans-serif" font-size="28" font-weight="700">Contribution snake is being generated...</text>
+  <text x="48" y="122" fill="#475569" font-family="Arial, sans-serif" font-size="20">After the first workflow run this area will show the animated contribution graph.</text>
+</svg>

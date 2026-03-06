@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="180" viewBox="0 0 860 180" role="img" aria-labelledby="title desc">
+  <title id="title">Contribution snake placeholder dark</title>
+  <desc id="desc">Dark placeholder shown until the contribution snake animation is generated.</desc>
+  <rect width="860" height="180" rx="24" fill="#020617" />
+  <rect x="24" y="24" width="812" height="132" rx="18" fill="#0f172a" stroke="#1e293b" />
+  <text x="48" y="84" fill="#f8fafc" font-family="Arial, sans-serif" font-size="28" font-weight="700">Contribution snake is being generated...</text>
+  <text x="48" y="122" fill="#94a3b8" font-family="Arial, sans-serif" font-size="20">The workflow will replace this placeholder with the dark SVG animation.</text>
+</svg>
