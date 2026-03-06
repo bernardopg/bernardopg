@@ -5,7 +5,7 @@ This file centralizes the copy and profile settings that should stay aligned acr
 ## Source Of Truth
 
 - Name: `Bernardo Gomes`
-- Website: `https://www.bebitterbebetter.com.br/`
+- Website: `https://bebitterbebetter.com.br/`
 - GitHub: `https://github.com/bernardopg`
 - GitHub Sponsors: `https://github.com/sponsors/bernardopg`
 - LinkedIn: `https://www.linkedin.com/in/bernardopg/`
@@ -21,11 +21,11 @@ This file centralizes the copy and profile settings that should stay aligned acr
 
 - Name: `Bernardo Gomes`
 - Bio:
-  `Frontend engineer, automation builder, and medical student shipping polished products for web, Linux, and healthcare workflows.`
+  `Frontend engineer, automation builder, and medical student building polished products for web, Linux, and healthcare workflows.`
 - Company:
   `BeBitter & BeBetter`
 - Website:
-  `https://www.bebitterbebetter.com.br/`
+  `https://bebitterbebetter.com.br/`
 - Location:
   `Belo Horizonte, Brazil`
 - X username:
@@ -120,5 +120,7 @@ This file centralizes the copy and profile settings that should stay aligned acr
 
 ## Notes
 
-- GitHub profile and Sponsors could not be updated directly from this environment because the active `gh` token lacks the `user` scope.
-- The copy above is ready to paste into GitHub settings, GitHub Sponsors, and LinkedIn with minimal adaptation.
+- GitHub profile fields were updated successfully on `2026-03-06`.
+- GitHub Sponsors tiers were created and published successfully on `2026-03-06`.
+- The public GitHub GraphQL schema currently exposes `createSponsorsListing`, but not an `updateSponsorsListing` mutation, so the existing Sponsors listing text still needs the web dashboard if you want to replace the default short description and full description.
+- The copy above remains the source of truth for GitHub Sponsors, LinkedIn, and short social bios.

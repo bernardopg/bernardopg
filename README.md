@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <a href="https://www.bebitterbebetter.com.br/"><img src="https://img.shields.io/badge/Portfolio-bebitterbebetter.com.br-0F766E?style=for-the-badge&logo=firefoxbrowser&logoColor=white" alt="Portfolio" /></a>
+  <a href="https://bebitterbebetter.com.br/"><img src="https://img.shields.io/badge/Portfolio-bebitterbebetter.com.br-0F766E?style=for-the-badge&logo=firefoxbrowser&logoColor=white" alt="Portfolio" /></a>
   <a href="https://github.com/sponsors/bernardopg"><img src="https://img.shields.io/badge/Sponsor-Open%20Source%20Work-E11D48?style=for-the-badge&logo=githubsponsors&logoColor=white" alt="Sponsor" /></a>
   <a href="https://www.linkedin.com/in/bernardopg/"><img src="https://img.shields.io/badge/LinkedIn-bernardopg-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
   <a href="mailto:bernardo.gomes@bebitterbebetter.com.br"><img src="https://img.shields.io/badge/Email-bernardo.gomes%40bebitterbebetter.com.br-1F2937?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
@@ -118,7 +118,7 @@ If my work is useful to you, sponsoring helps me spend more time building open-s
 ## Contact / Contato
 
 <p align="center">
-  <a href="https://www.bebitterbebetter.com.br/"><img src="https://img.shields.io/badge/Website-Visit%20Portfolio-0F766E?style=for-the-badge&logo=firefoxbrowser&logoColor=white" alt="Website" /></a>
+  <a href="https://bebitterbebetter.com.br/"><img src="https://img.shields.io/badge/Website-Visit%20Portfolio-0F766E?style=for-the-badge&logo=firefoxbrowser&logoColor=white" alt="Website" /></a>
   <a href="https://github.com/sponsors/bernardopg"><img src="https://img.shields.io/badge/Sponsor-Back%20my%20work-E11D48?style=for-the-badge&logo=githubsponsors&logoColor=white" alt="Sponsor" /></a>
   <a href="https://www.linkedin.com/in/bernardopg/"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
   <a href="mailto:bernardo.gomes@bebitterbebetter.com.br"><img src="https://img.shields.io/badge/Email-Let%27s%20talk-1F2937?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
