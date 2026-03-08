@@ -44,7 +44,7 @@ jobs:
             if git pull --rebase origin main; then
               git push && exit 0
             else
-              git rebase --abort
+              git rebase --abort || true
             fi
             if [ "$attempt" -eq 3 ]; then
               echo "Failed to push refreshed snake assets after 3 attempts." >&2
