@@ -80,7 +80,7 @@ jobs:
               git rebase --abort
             fi
             if [ "$attempt" -eq 3 ]; then
-              echo "Failed to push refreshed metrics after ${attempt} attempts." >&2
+              echo "Failed to push refreshed metrics after 3 attempts." >&2
               exit 1
             fi
             sleep 5
