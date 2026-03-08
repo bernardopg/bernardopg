@@ -74,10 +74,11 @@ jobs:
           git diff --cached --quiet && exit 0
           git commit -m "chore: refresh profile metrics [skip ci]"
           for attempt in 1 2 3; do
-            if git pull --rebase origin main && git push; then
-              exit 0
+            if git pull --rebase origin main; then
+              git push && exit 0
+            else
+              git rebase --abort
             fi
-            git rebase --abort || true
             if [ "$attempt" -eq 3 ]; then
               echo "Failed to push refreshed metrics after ${attempt} attempts." >&2
               exit 1
