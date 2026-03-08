@@ -40,4 +40,14 @@ jobs:
           git add .github/assets/snake.svg .github/assets/snake-dark.svg
           git diff --cached --quiet && exit 0
           git commit -m "chore: refresh contribution snake [skip ci]"
-          git push
+          for attempt in 1 2 3; do
+            if git pull --rebase origin main && git push; then
+              exit 0
+            fi
+            git rebase --abort || true
+            if [ "$attempt" -eq 3 ]; then
+              echo "Failed to push refreshed snake assets after ${attempt} attempts." >&2
+              exit 1
+            fi
+            sleep 5
+          done
