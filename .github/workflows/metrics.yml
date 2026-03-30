@@ -36,9 +36,6 @@ jobs:
           config_timezone: America/Sao_Paulo
           repositories_forks: no
           repositories_affiliations: owner
-          plugin_lines: yes
-          plugin_lines_sections: base
-          plugin_lines_delay: 30
 
       - name: Generate language metrics
         uses: lowlighter/metrics@v3.34
