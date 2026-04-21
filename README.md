@@ -4,7 +4,6 @@
 
 <p align="center">
   <a href="https://bebitterbebetter.com.br/"><img src="https://img.shields.io/badge/Portfolio-bebitterbebetter.com.br-0F766E?style=for-the-badge&logo=firefoxbrowser&logoColor=white" alt="Portfolio" /></a>
-  <a href="https://github.com/sponsors/bernardopg"><img src="https://img.shields.io/badge/Sponsor-Open%20Source%20Work-E11D48?style=for-the-badge&logo=githubsponsors&logoColor=white" alt="Sponsor" /></a>
   <a href="https://www.linkedin.com/in/bernardopg/"><img src="https://img.shields.io/badge/LinkedIn-bernardopg-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
   <a href="mailto:bernardo.gomes@bebitterbebetter.com.br"><img src="https://img.shields.io/badge/Email-bernardo.gomes%40bebitterbebetter.com.br-1F2937?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
   <a href="https://github.com/bernardopg"><img src="https://img.shields.io/badge/GitHub-bernardopg-111827?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" /></a>
@@ -62,8 +61,7 @@ I care about software that feels intentional:
 | [`doctoralia-scrapper`](https://github.com/bernardopg/doctoralia-scrapper) | End-to-end healthcare workflow automation with scraping, response generation, API endpoints, async jobs, and notifications. |
 | [`mvp-estetoscopio`](https://github.com/bernardopg/mvp-estetoscopio) | Study platform centered on spaced repetition, multimedia flashcards, and a modern full-stack learning experience. |
 | [`cmmg-calendar`](https://github.com/bernardopg/cmmg-calendar) | Academic schedule converter and analyzer that turns institutional JSON into calendar-ready workflows and usable interfaces. |
-| [`arduino-audio-controller`](https://github.com/bernardopg/arduino-audio-controller) | Linux hardware mixer powered by Arduino, Python, GTK4, and LibAdwaita for practical desktop audio control. |
-| [`iaruba`](https://github.com/bernardopg/iaruba) | Functional Linux audio tooling with Haskell, GTK, and hardware control, built with a systems-oriented mindset. |
+| [`ioruba`](https://github.com/bernardopg/ioruba) | Functional Linux audio tooling with Haskell, GTK, and hardware control, built with a systems-oriented mindset. |
 
 **Also shipping / Também construindo:** [`dms-adguard-vpn-plugin`](https://github.com/bernardopg/dms-adguard-vpn-plugin), [`dolphin-servicemenus`](https://github.com/bernardopg/dolphin-servicemenus), [`mymediaplayer`](https://github.com/bernardopg/mymediaplayer), [`steam-idler-python`](https://github.com/bernardopg/steam-idler-python).
 
@@ -88,7 +86,7 @@ If my work is useful to you, sponsoring helps me spend more time building open-s
 ## Toolbox / Ferramentas
 
 <p align="center">
-  <img src="https://skillicons.dev/icons?i=react,ts,nextjs,vite,tailwind,python,fastapi,flask,nodejs,docker,git,linux" alt="Core tools" />
+  <img src="https://skillicons.dev/icons?i=react,ts,nodejs,bun,npm,vite,tailwind,rust,c,dotnet,python,fastapi,flask,docker,git,linux,arch" alt="Core tools" />
 </p>
 
 <p align="center">
