@@ -21,12 +21,12 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6.0.2
         with:
           fetch-depth: 0
 
       - name: Generate snake animation
-        uses: Platane/snk/svg-only@v3
+        uses: Platane/snk/svg-only@v3.3.0
         with:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
