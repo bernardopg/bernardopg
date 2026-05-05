@@ -1,128 +1,131 @@
+<h1 align="center">Bernardo Gomes</h1>
+
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0F172A,45:134E4A,100:F59E0B&height=240&section=header&text=Bernardo%20Gomes&fontSize=50&fontColor=FFFFFF&fontAlignY=38&desc=Frontend%20Engineer%20%7C%20Automation%20Builder%20%7C%20Medical%20Student&descAlignY=58" alt="Bernardo Gomes banner" />
+  <strong>Building practical software, automation, browser tools, and Linux-first workflows.</strong>
 </p>
 
 <p align="center">
-  <a href="https://bebitterbebetter.com.br/"><img src="https://img.shields.io/badge/Portfolio-bebitterbebetter.com.br-0F766E?style=for-the-badge&logo=firefoxbrowser&logoColor=white" alt="Portfolio" /></a>
-  <a href="https://www.linkedin.com/in/bernardopg/"><img src="https://img.shields.io/badge/LinkedIn-bernardopg-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
-  <a href="mailto:bernardo.gomes@bebitterbebetter.com.br"><img src="https://img.shields.io/badge/Email-bernardo.gomes%40bebitterbebetter.com.br-1F2937?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
-  <a href="https://github.com/bernardopg"><img src="https://img.shields.io/badge/GitHub-bernardopg-111827?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" /></a>
-  <img src="https://img.shields.io/badge/Based%20in-Brazil-F59E0B?style=for-the-badge&logo=googlemaps&logoColor=white" alt="Based in Brazil" />
+  <a href="mailto:bernardo.gomes@bebitterbebetter.com.br">
+    <img alt="Email" src="https://img.shields.io/badge/Email-bernardo.gomes%40bebitterbebetter.com.br-0A66C2?style=for-the-badge&logo=gmail&logoColor=white">
+  </a>
+  <a href="https://github.com/bernardopg">
+    <img alt="GitHub" src="https://img.shields.io/badge/GitHub-bernardopg-181717?style=for-the-badge&logo=github&logoColor=white">
+  </a>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Frontend-React%20%7C%20TypeScript%20%7C%20Next.js-0EA5E9?style=flat-square" alt="Frontend stack" />
-  <img src="https://img.shields.io/badge/Automation-Python%20%7C%20FastAPI%20%7C%20Selenium-0F766E?style=flat-square" alt="Automation stack" />
-  <img src="https://img.shields.io/badge/Linux-GTK%20%7C%20QML%20%7C%20Hardware-92400E?style=flat-square" alt="Linux tooling" />
+  <a href="#pt-br">Português</a> · <a href="#english">English</a> · <a href="#featured-work">Projects</a> · <a href="#stack">Stack</a>
+</p>
+
+---
+
+<a id="pt-br"></a>
+
+## 🇧🇷 Português
+
+Sou o Bernardo Gomes. Gosto de transformar ideias em ferramentas úteis, bem organizadas e fáceis de manter. Meus projetos normalmente combinam automação, extensões, interfaces web, experiências com IA, produtividade no Linux e soluções pragmáticas para problemas reais.
+
+### Foco atual
+
+- **Automação e produtividade:** scripts, integrações, extensões e fluxos que reduzem trabalho repetitivo.
+- **Ferramentas para navegador e desktop:** projetos voltados para experiência de uso, controle, personalização e utilidade diária.
+- **Linux e ambientes de desenvolvimento:** configurações, shells, plugins e workflows para trabalhar com mais velocidade.
+- **Produtos e MVPs:** protótipos, aplicações web e experimentos orientados a validação prática.
+
+<a id="featured-work"></a>
+
+### Projetos em destaque
+
+| Área | Projeto | O que mostra |
+| --- | --- | --- |
+| Browser / IA | [AiOverviewControl](https://github.com/bernardopg/AiOverviewControl) | Controle e personalização de experiências ligadas a AI Overview. |
+| Browser / Produto | [bitter-browser](https://github.com/bernardopg/bitter-browser) | Experimentação com browser tooling e experiência de navegação. |
+| Terminal / IA | [claude-terminal](https://github.com/bernardopg/claude-terminal) | Interfaces e fluxos de IA voltados para terminal e produtividade. |
+| Desktop Linux | [DankMaterialShell](https://github.com/bernardopg/DankMaterialShell) | Personalização de ambiente desktop e shell. |
+| Plugins | [dms-plugin-registry](https://github.com/bernardopg/dms-plugin-registry) | Organização e distribuição de plugins. |
+| Segurança / Utilitários | [bitwarden_vault_analyser](https://github.com/bernardopg/bitwarden_vault_analyser) | Ferramentas para análise e manutenção de cofres/senhas. |
+| Automação | [AutoJoin-for-SteamGifts](https://github.com/bernardopg/AutoJoin-for-SteamGifts) | Automação aplicada a fluxos repetitivos. |
+| Web / Comunidade | [LASCMMG](https://github.com/bernardopg/LASCMMG) | Desenvolvimento web com contexto institucional/comunitário. |
+
+<a id="stack"></a>
+
+### Stack e ferramentas
+
+<p>
+  <img alt="Python" src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white">
+  <img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black">
+  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white">
+  <img alt="HTML5" src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white">
+  <img alt="CSS3" src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white">
+  <img alt="Shell" src="https://img.shields.io/badge/Shell-4EAA25?style=flat-square&logo=gnubash&logoColor=white">
+  <img alt="Linux" src="https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black">
+  <img alt="Git" src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white">
+  <img alt="GitHub" src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white">
+  <img alt="Arduino" src="https://img.shields.io/badge/Arduino-00979D?style=flat-square&logo=arduino&logoColor=white">
+</p>
+
+**Onde costumo atuar:** automação, web, extensões, terminal, Linux, utilitários, prototipagem e experimentos com IA.
+
+---
+
+<a id="english"></a>
+
+## 🇺🇸 English
+
+I'm Bernardo Gomes. I like turning ideas into useful, well-structured, maintainable tools. My projects usually combine automation, browser extensions, web interfaces, AI experiments, Linux productivity, and pragmatic solutions to real problems.
+
+### Current focus
+
+- **Automation and productivity:** scripts, integrations, extensions, and workflows that reduce repetitive work.
+- **Browser and desktop tools:** projects focused on usability, control, customization, and day-to-day utility.
+- **Linux and development environments:** configs, shells, plugins, and workflows for faster work.
+- **Products and MVPs:** prototypes, web apps, and experiments built for practical validation.
+
+### Featured work
+
+| Area | Project | What it shows |
+| --- | --- | --- |
+| Browser / AI | [AiOverviewControl](https://github.com/bernardopg/AiOverviewControl) | Control and customization around AI Overview experiences. |
+| Browser / Product | [bitter-browser](https://github.com/bernardopg/bitter-browser) | Browser tooling and navigation experience experiments. |
+| Terminal / AI | [claude-terminal](https://github.com/bernardopg/claude-terminal) | AI-oriented terminal workflows and interfaces. |
+| Linux Desktop | [DankMaterialShell](https://github.com/bernardopg/DankMaterialShell) | Desktop environment and shell customization. |
+| Plugins | [dms-plugin-registry](https://github.com/bernardopg/dms-plugin-registry) | Plugin organization and distribution. |
+| Security / Utilities | [bitwarden_vault_analyser](https://github.com/bernardopg/bitwarden_vault_analyser) | Tools for vault/password analysis and maintenance. |
+| Automation | [AutoJoin-for-SteamGifts](https://github.com/bernardopg/AutoJoin-for-SteamGifts) | Automation applied to repetitive workflows. |
+| Web / Community | [LASCMMG](https://github.com/bernardopg/LASCMMG) | Web development in an institutional/community context. |
+
+### Stack and tools
+
+<p>
+  <img alt="Python" src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white">
+  <img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black">
+  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white">
+  <img alt="HTML5" src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white">
+  <img alt="CSS3" src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white">
+  <img alt="Shell" src="https://img.shields.io/badge/Shell-4EAA25?style=flat-square&logo=gnubash&logoColor=white">
+  <img alt="Linux" src="https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black">
+  <img alt="Git" src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white">
+  <img alt="GitHub" src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white">
+  <img alt="Arduino" src="https://img.shields.io/badge/Arduino-00979D?style=flat-square&logo=arduino&logoColor=white">
+</p>
+
+**Typical areas:** automation, web, extensions, terminal, Linux, utilities, prototyping, and AI experiments.
+
+---
+
+## GitHub activity
+
+<p align="center">
+  <img height="165" alt="GitHub stats" src="https://github-readme-stats.vercel.app/api?username=bernardopg&show_icons=true&hide_border=true&theme=transparent&rank_icon=github">
+  <img height="165" alt="Top languages" src="https://github-readme-stats.vercel.app/api/top-langs/?username=bernardopg&layout=compact&hide_border=true&theme=transparent">
 </p>
 
 <p align="center">
-  <a href="#pt-br">PT-BR</a> •
-  <a href="#english">English</a> •
-  <a href="#focus-areas--areas-de-foco">Focus Areas</a> •
-  <a href="#featured-work--projetos-em-destaque">Featured Work</a> •
-  <a href="#support-my-work--apoie-meu-trabalho">Support</a> •
-  <a href="#elsewhere--redes">Elsewhere</a> •
-  <a href="#contact--contato">Contact</a>
+  <img alt="GitHub streak" src="https://streak-stats.demolab.com?user=bernardopg&theme=transparent&hide_border=true">
 </p>
 
-## PT-BR
-
-Sou Bernardo Gomes, desenvolvedor com foco forte em front-end, automação e experiência de produto, atualmente também estudante de Medicina. Gosto de construir software com acabamento real: interfaces polidas, automações úteis, ferramentas Linux nativas e produtos que resolvem problemas concretos.
-
-Meus projetos costumam viver na interseção entre:
-
-- engenharia de front-end com React, TypeScript e arquitetura moderna
-- automação aplicada à saúde, produtividade e operação
-- ecossistema Linux, hardware, áudio e desktop customization
-
-## English
-
-I am Bernardo Gomes, a frontend-first engineer focused on automation, product experience, and polished execution, while also studying Medicine. Most of my work sits at the intersection of modern web engineering, Linux-native tooling, hardware integration, and healthcare-adjacent products.
-
-I care about software that feels intentional:
-
-- strong UI and performance, not just shipping screens
-- automation that saves time in real workflows
-- systems that connect product thinking, engineering rigor, and human context
-
-## Focus Areas / Areas de Foco
-
-- Frontend products built with React, TypeScript, Next.js, Vite, and performance-first thinking.
-- Automation systems for healthcare, browsers, and operational workflows with Python, APIs, and bots.
-- Linux-native tools, audio workflows, hardware integrations, and custom desktop experiences.
-- Product-minded engineering shaped by both software practice and medical training.
-
-## Featured Work / Projetos em Destaque
-
-| Project | Why it matters |
-| --- | --- |
-| [`BeBitter`](https://github.com/bernardopg/BeBitter) | Performance-first portfolio in React and TypeScript, with bilingual UX, strong visual direction, and production-level frontend care. |
-| [`doctoralia-scrapper`](https://github.com/bernardopg/doctoralia-scrapper) | End-to-end healthcare workflow automation with scraping, response generation, API endpoints, async jobs, and notifications. |
-| [`mvp-estetoscopio`](https://github.com/bernardopg/mvp-estetoscopio) | Study platform centered on spaced repetition, multimedia flashcards, and a modern full-stack learning experience. |
-| [`cmmg-calendar`](https://github.com/bernardopg/cmmg-calendar) | Academic schedule converter and analyzer that turns institutional JSON into calendar-ready workflows and usable interfaces. |
-| [`ioruba`](https://github.com/bernardopg/ioruba) | Functional Linux audio tooling with Haskell, GTK, and hardware control, built with a systems-oriented mindset. |
-
-**Also shipping / Também construindo:** [`dms-adguard-vpn-plugin`](https://github.com/bernardopg/dms-adguard-vpn-plugin), [`dolphin-servicemenus`](https://github.com/bernardopg/dolphin-servicemenus), [`mymediaplayer`](https://github.com/bernardopg/mymediaplayer), [`steam-idler-python`](https://github.com/bernardopg/steam-idler-python).
-
-## Support My Work / Apoie Meu Trabalho
-
-If my work is useful to you, sponsoring helps me spend more time building open-source tools, polished frontend products, Linux-native experiments, and automation that solves real workflows.
+---
 
 <p align="center">
-  <a href="https://github.com/sponsors/bernardopg"><img src="https://img.shields.io/badge/GitHub%20Sponsors-Support%20bernardopg-E11D48?style=for-the-badge&logo=githubsponsors&logoColor=white" alt="Support on GitHub Sponsors" /></a>
-</p>
-
-## Elsewhere / Redes
-
-<p align="center">
-  <a href="https://www.linkedin.com/in/bernardopg/"><img src="https://img.shields.io/badge/LinkedIn-bernardopg-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
-  <a href="https://www.instagram.com/be.pgomes/"><img src="https://img.shields.io/badge/Instagram-be.pgomes-C13584?style=flat-square&logo=instagram&logoColor=white" alt="Instagram" /></a>
-  <a href="https://x.com/cooldeflecha"><img src="https://img.shields.io/badge/X-cooldeflecha-111827?style=flat-square&logo=x&logoColor=white" alt="X" /></a>
-  <a href="https://vm.tiktok.com/ZMjE479hG"><img src="https://img.shields.io/badge/TikTok-Open%20profile-111827?style=flat-square&logo=tiktok&logoColor=white" alt="TikTok" /></a>
-  <a href="https://bznkng9.wordpress.com"><img src="https://img.shields.io/badge/WordPress-bznkng9-21759B?style=flat-square&logo=wordpress&logoColor=white" alt="WordPress" /></a>
-</p>
-
-## Toolbox / Ferramentas
-
-<p align="center">
-  <img src="https://skillicons.dev/icons?i=react,ts,nodejs,bun,npm,vite,tailwind,rust,c,dotnet,python,fastapi,flask,docker,git,linux,arch" alt="Core tools" />
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/UI%20Systems-Radix%20UI%20%7C%20shadcn%2Fui%20%7C%20LibAdwaita-0F766E?style=flat-square" alt="UI systems" />
-  <img src="https://img.shields.io/badge/Automation-Selenium%20%7C%20Telegram%20%7C%20n8n-1F2937?style=flat-square" alt="Automation tools" />
-  <img src="https://img.shields.io/badge/Linux%20Stack-GTK4%20%7C%20QML%20%7C%20Arduino-F59E0B?style=flat-square" alt="Linux stack" />
-  <img src="https://img.shields.io/badge/Also%20Used-Haskell%20%7C%20C%20%7C%20SQLite-334155?style=flat-square" alt="Also used" />
-</p>
-
-## Signals / Sinais
-
-<p align="center">
-  <img src="./.github/assets/metrics.base.svg" alt="GitHub profile metrics" width="49%" />
-  <img src="./.github/assets/metrics.languages.svg" alt="GitHub language metrics" width="49%" />
-</p>
-
-## Contribution Flow / Fluxo de Contribuições
-
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./.github/assets/snake-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="./.github/assets/snake.svg" />
-    <img alt="Contribution snake animation" src="./.github/assets/snake.svg" />
-  </picture>
-</p>
-
-## Contact / Contato
-
-<p align="center">
-  <a href="https://bebitterbebetter.com.br/"><img src="https://img.shields.io/badge/Website-Visit%20Portfolio-0F766E?style=for-the-badge&logo=firefoxbrowser&logoColor=white" alt="Website" /></a>
-  <a href="https://github.com/sponsors/bernardopg"><img src="https://img.shields.io/badge/Sponsor-Back%20my%20work-E11D48?style=for-the-badge&logo=githubsponsors&logoColor=white" alt="Sponsor" /></a>
-  <a href="https://www.linkedin.com/in/bernardopg/"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
-  <a href="mailto:bernardo.gomes@bebitterbebetter.com.br"><img src="https://img.shields.io/badge/Email-Let%27s%20talk-1F2937?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
-  <a href="https://www.instagram.com/be.pgomes/"><img src="https://img.shields.io/badge/Instagram-be.pgomes-C13584?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram" /></a>
-</p>
-
-<p align="center">
-  Open to frontend-heavy products, automation-intensive tooling, and technical ideas that need strong execution.
+  <strong>Useful first. Clean next. Better every iteration.</strong>
 </p>
