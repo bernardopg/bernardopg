@@ -1,128 +1,89 @@
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0F172A,45:134E4A,100:F59E0B&height=240&section=header&text=Bernardo%20Gomes&fontSize=50&fontColor=FFFFFF&fontAlignY=38&desc=Frontend%20Engineer%20%7C%20Automation%20Builder%20%7C%20Medical%20Student&descAlignY=58" alt="Bernardo Gomes banner" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./.github/assets/hero-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="./.github/assets/hero-light.svg" />
+    <img src="./.github/assets/hero-light.svg" alt="Bernardo Gomes — product engineer building software for web, Linux, automation, and healthcare" width="100%" />
+  </picture>
 </p>
 
 <p align="center">
-  <a href="https://bebitterbebetter.com.br/"><img src="https://img.shields.io/badge/Portfolio-bebitterbebetter.com.br-0F766E?style=for-the-badge&logo=firefoxbrowser&logoColor=white" alt="Portfolio" /></a>
-  <a href="https://www.linkedin.com/in/bernardopg/"><img src="https://img.shields.io/badge/LinkedIn-bernardopg-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
-  <a href="mailto:bernardo.gomes@bebitterbebetter.com.br"><img src="https://img.shields.io/badge/Email-bernardo.gomes%40bebitterbebetter.com.br-1F2937?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
-  <a href="https://github.com/bernardopg"><img src="https://img.shields.io/badge/GitHub-bernardopg-111827?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" /></a>
-  <img src="https://img.shields.io/badge/Based%20in-Brazil-F59E0B?style=for-the-badge&logo=googlemaps&logoColor=white" alt="Based in Brazil" />
+  <a href="https://bebitterbebetter.com.br/"><img src="https://img.shields.io/website?url=https%3A%2F%2Fbebitterbebetter.com.br&style=flat-square&label=portfolio&up_message=online&down_message=offline&logo=firefoxbrowser" alt="Portfolio status" /></a>
+  <a href="https://www.linkedin.com/in/bernardopg/"><img src="https://img.shields.io/badge/LinkedIn-bernardopg-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn profile" /></a>
+  <a href="https://github.com/sponsors/bernardopg"><img src="https://img.shields.io/badge/Sponsors-support%20my%20work-EA4AAA?style=flat-square&logo=githubsponsors&logoColor=white" alt="GitHub Sponsors" /></a>
+  <a href="mailto:bernardo.gomes@bebitterbebetter.com.br"><img src="https://img.shields.io/badge/email-let's%20talk-334155?style=flat-square&logo=gmail&logoColor=white" alt="Email Bernardo Gomes" /></a>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Frontend-React%20%7C%20TypeScript%20%7C%20Next.js-0EA5E9?style=flat-square" alt="Frontend stack" />
-  <img src="https://img.shields.io/badge/Automation-Python%20%7C%20FastAPI%20%7C%20Selenium-0F766E?style=flat-square" alt="Automation stack" />
-  <img src="https://img.shields.io/badge/Linux-GTK%20%7C%20QML%20%7C%20Hardware-92400E?style=flat-square" alt="Linux tooling" />
+  <code>Product Engineering</code> · <code>Frontend Architecture</code> · <code>Linux Desktop</code> · <code>Automation</code> · <code>Healthcare</code>
 </p>
 
-<p align="center">
-  <a href="#pt-br">PT-BR</a> •
-  <a href="#english">English</a> •
-  <a href="#focus-areas--areas-de-foco">Focus Areas</a> •
-  <a href="#featured-work--projetos-em-destaque">Featured Work</a> •
-  <a href="#support-my-work--apoie-meu-trabalho">Support</a> •
-  <a href="#elsewhere--redes">Elsewhere</a> •
-  <a href="#contact--contato">Contact</a>
-</p>
+## Engineering useful software across disciplines
 
-## PT-BR
+I am a **frontend-first product engineer and medical student** based in Belo Horizonte, Brazil. I design and ship product-grade software where interface quality, systems thinking, and real-world workflows meet—from high-performance web applications to Linux-native tools, browser automation, hardware integrations, and healthcare-adjacent products.
 
-Sou Bernardo Gomes, desenvolvedor com foco forte em front-end, automação e experiência de produto, atualmente também estudante de Medicina. Gosto de construir software com acabamento real: interfaces polidas, automações úteis, ferramentas Linux nativas e produtos que resolvem problemas concretos.
+My work favors measurable outcomes: accessible interfaces, explicit architecture, reliable automation, observable integrations, security-aware delivery, and documentation that makes maintenance easier.
 
-Meus projetos costumam viver na interseção entre:
+<details>
+  <summary><strong>Resumo em português</strong></summary>
+  <br />
+  Sou engenheiro de produto com forte especialização em frontend e estudante de Medicina. Construo aplicações web de alta performance, ferramentas nativas para Linux, automações e integrações de hardware, sempre com atenção a UX, arquitetura, segurança, observabilidade e manutenção de longo prazo.
+</details>
 
-- engenharia de front-end com React, TypeScript e arquitetura moderna
-- automação aplicada à saúde, produtividade e operação
-- ecossistema Linux, hardware, áudio e desktop customization
+## What I am building
 
-## English
+- **Linux desktop engineering:** QML/Quickshell plugins, telemetry surfaces, hardware controls, PipeWire workflows, and native-feeling desktop integrations.
+- **Product frontend:** React and TypeScript applications with design systems, accessibility, performance budgets, SEO, testing, and production delivery.
+- **Automation and services:** Python/FastAPI systems, browser automation, API orchestration, asynchronous jobs, notifications, and operational tooling.
+- **Healthcare and education:** calendar interoperability, clinical-review workflows, and spaced-repetition products informed by medical training.
 
-I am Bernardo Gomes, a frontend-first engineer focused on automation, product experience, and polished execution, while also studying Medicine. Most of my work sits at the intersection of modern web engineering, Linux-native tooling, hardware integration, and healthcare-adjacent products.
+## Selected engineering work
 
-I care about software that feels intentional:
+| Project | Engineering scope | Core stack |
+| --- | --- | --- |
+| [**AiOverviewControl**](https://github.com/bernardopg/AiOverviewControl) | Multi-provider AI quota telemetry and provider-health surfaces for DankMaterialShell. | QML, Qt, Quickshell, API integrations |
+| [**ioruba**](https://github.com/bernardopg/ioruba) | Arduino-driven desktop audio mixer connecting physical controls to Linux audio. | Tauri 2, React, TypeScript, Rust, serial I/O, PipeWire |
+| [**LASCMMG**](https://github.com/bernardopg/LASCMMG) | Real-time tournament platform with authenticated workflows, live updates, and offline-capable UX. | React, Node.js, Express, Socket.IO, Redis, SQLite, PWA |
+| [**BeBitter**](https://github.com/bernardopg/BeBitter) | Bilingual portfolio with repository-backed content, performance budgets, secure delivery, and technical SEO. | React 19, TypeScript, Vite 8, Tailwind CSS 4, Vitest, CodeQL |
+| [**cmmg-calendar**](https://github.com/bernardopg/cmmg-calendar) | Academic schedule parsing and calendar interoperability for Google Calendar and Apple Calendar. | TypeScript, data parsing, iCalendar/ICS, web automation |
+| [**doctoralia-scrapper**](https://github.com/bernardopg/doctoralia-scrapper) | Healthcare review ingestion, response-generation pipeline, API endpoints, and operational notifications. | Python, FastAPI, Selenium, async jobs, Telegram Bot API |
 
-- strong UI and performance, not just shipping screens
-- automation that saves time in real workflows
-- systems that connect product thinking, engineering rigor, and human context
+Also shipping: [dms-adguard-vpn-plugin](https://github.com/bernardopg/dms-adguard-vpn-plugin) · [full-upgrade](https://github.com/bernardopg/full-upgrade) · [AutoJoin-for-SteamGifts](https://github.com/bernardopg/AutoJoin-for-SteamGifts) · [mvp-estetoscopio](https://github.com/bernardopg/mvp-estetoscopio)
 
-## Focus Areas / Areas de Foco
+## Technical toolbox
 
-- Frontend products built with React, TypeScript, Next.js, Vite, and performance-first thinking.
-- Automation systems for healthcare, browsers, and operational workflows with Python, APIs, and bots.
-- Linux-native tools, audio workflows, hardware integrations, and custom desktop experiences.
-- Product-minded engineering shaped by both software practice and medical training.
-
-## Featured Work / Projetos em Destaque
-
-| Project | Why it matters |
+| Area | Technologies and practices |
 | --- | --- |
-| [`BeBitter`](https://github.com/bernardopg/BeBitter) | Performance-first portfolio in React and TypeScript, with bilingual UX, strong visual direction, and production-level frontend care. |
-| [`doctoralia-scrapper`](https://github.com/bernardopg/doctoralia-scrapper) | End-to-end healthcare workflow automation with scraping, response generation, API endpoints, async jobs, and notifications. |
-| [`mvp-estetoscopio`](https://github.com/bernardopg/mvp-estetoscopio) | Study platform centered on spaced repetition, multimedia flashcards, and a modern full-stack learning experience. |
-| [`cmmg-calendar`](https://github.com/bernardopg/cmmg-calendar) | Academic schedule converter and analyzer that turns institutional JSON into calendar-ready workflows and usable interfaces. |
-| [`ioruba`](https://github.com/bernardopg/ioruba) | Functional Linux audio tooling with Haskell, GTK, and hardware control, built with a systems-oriented mindset. |
+| **Frontend & product** | React, TypeScript, Vite, Next.js, Tailwind CSS, Radix UI, shadcn/ui, design systems, WCAG, Core Web Vitals |
+| **Services & automation** | Python, FastAPI, Flask, Node.js, REST APIs, Selenium, scraping, asynchronous processing, Telegram bots |
+| **Linux & systems** | QML, Quickshell, Qt/GTK, Rust, C, Shell, Tauri, PipeWire, systemd, Arch Linux |
+| **Hardware & data** | Arduino, serial protocols, SQLite, Redis, iCalendar/ICS, device-to-desktop integrations |
+| **Quality & delivery** | GitHub Actions, Docker, Vitest, Testing Library, ESLint, CodeQL, dependency review, Lighthouse, semantic releases |
 
-**Also shipping / Também construindo:** [`dms-adguard-vpn-plugin`](https://github.com/bernardopg/dms-adguard-vpn-plugin), [`dolphin-servicemenus`](https://github.com/bernardopg/dolphin-servicemenus), [`mymediaplayer`](https://github.com/bernardopg/mymediaplayer), [`steam-idler-python`](https://github.com/bernardopg/steam-idler-python).
-
-## Support My Work / Apoie Meu Trabalho
-
-If my work is useful to you, sponsoring helps me spend more time building open-source tools, polished frontend products, Linux-native experiments, and automation that solves real workflows.
+## Open-source signals
 
 <p align="center">
-  <a href="https://github.com/sponsors/bernardopg"><img src="https://img.shields.io/badge/GitHub%20Sponsors-Support%20bernardopg-E11D48?style=for-the-badge&logo=githubsponsors&logoColor=white" alt="Support on GitHub Sponsors" /></a>
+  <img src="./.github/assets/metrics.base.svg" alt="GitHub activity, community, and repository metrics for Bernardo Gomes" width="49%" />
+  <img src="./.github/assets/metrics.languages.svg" alt="Most-used programming languages across Bernardo Gomes's repositories" width="49%" />
 </p>
-
-## Elsewhere / Redes
-
-<p align="center">
-  <a href="https://www.linkedin.com/in/bernardopg/"><img src="https://img.shields.io/badge/LinkedIn-bernardopg-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
-  <a href="https://www.instagram.com/be.pgomes/"><img src="https://img.shields.io/badge/Instagram-be.pgomes-C13584?style=flat-square&logo=instagram&logoColor=white" alt="Instagram" /></a>
-  <a href="https://x.com/cooldeflecha"><img src="https://img.shields.io/badge/X-cooldeflecha-111827?style=flat-square&logo=x&logoColor=white" alt="X" /></a>
-  <a href="https://vm.tiktok.com/ZMjE479hG"><img src="https://img.shields.io/badge/TikTok-Open%20profile-111827?style=flat-square&logo=tiktok&logoColor=white" alt="TikTok" /></a>
-  <a href="https://bznkng9.wordpress.com"><img src="https://img.shields.io/badge/WordPress-bznkng9-21759B?style=flat-square&logo=wordpress&logoColor=white" alt="WordPress" /></a>
-</p>
-
-## Toolbox / Ferramentas
-
-<p align="center">
-  <img src="https://skillicons.dev/icons?i=react,ts,nodejs,bun,npm,vite,tailwind,rust,c,dotnet,python,fastapi,flask,docker,git,linux,arch" alt="Core tools" />
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/UI%20Systems-Radix%20UI%20%7C%20shadcn%2Fui%20%7C%20LibAdwaita-0F766E?style=flat-square" alt="UI systems" />
-  <img src="https://img.shields.io/badge/Automation-Selenium%20%7C%20Telegram%20%7C%20n8n-1F2937?style=flat-square" alt="Automation tools" />
-  <img src="https://img.shields.io/badge/Linux%20Stack-GTK4%20%7C%20QML%20%7C%20Arduino-F59E0B?style=flat-square" alt="Linux stack" />
-  <img src="https://img.shields.io/badge/Also%20Used-Haskell%20%7C%20C%20%7C%20SQLite-334155?style=flat-square" alt="Also used" />
-</p>
-
-## Signals / Sinais
-
-<p align="center">
-  <img src="./.github/assets/metrics.base.svg" alt="GitHub profile metrics" width="49%" />
-  <img src="./.github/assets/metrics.languages.svg" alt="GitHub language metrics" width="49%" />
-</p>
-
-## Contribution Flow / Fluxo de Contribuições
 
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="./.github/assets/snake-dark.svg" />
     <source media="(prefers-color-scheme: light)" srcset="./.github/assets/snake.svg" />
-    <img alt="Contribution snake animation" src="./.github/assets/snake.svg" />
+    <img src="./.github/assets/snake.svg" alt="Animated contribution graph for Bernardo Gomes" width="100%" />
   </picture>
 </p>
 
-## Contact / Contato
+## Work with me
+
+I am open to frontend-heavy products, Linux desktop engineering, automation-intensive systems, and cross-disciplinary projects that benefit from strong product judgment and careful execution.
 
 <p align="center">
-  <a href="https://bebitterbebetter.com.br/"><img src="https://img.shields.io/badge/Website-Visit%20Portfolio-0F766E?style=for-the-badge&logo=firefoxbrowser&logoColor=white" alt="Website" /></a>
-  <a href="https://github.com/sponsors/bernardopg"><img src="https://img.shields.io/badge/Sponsor-Back%20my%20work-E11D48?style=for-the-badge&logo=githubsponsors&logoColor=white" alt="Sponsor" /></a>
-  <a href="https://www.linkedin.com/in/bernardopg/"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
-  <a href="mailto:bernardo.gomes@bebitterbebetter.com.br"><img src="https://img.shields.io/badge/Email-Let%27s%20talk-1F2937?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
-  <a href="https://www.instagram.com/be.pgomes/"><img src="https://img.shields.io/badge/Instagram-be.pgomes-C13584?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram" /></a>
+  <a href="https://bebitterbebetter.com.br/services"><img src="https://img.shields.io/badge/Services-view%20capabilities-7C3AED?style=for-the-badge&logo=firefoxbrowser&logoColor=white" alt="View engineering services" /></a>
+  <a href="https://cal.com/bernardopg"><img src="https://img.shields.io/badge/Meeting-book%20a%20call-06B6D4?style=for-the-badge&logo=caldotcom&logoColor=white" alt="Book a meeting" /></a>
+  <a href="https://github.com/sponsors/bernardopg"><img src="https://img.shields.io/badge/Open%20Source-sponsor-EA4AAA?style=for-the-badge&logo=githubsponsors&logoColor=white" alt="Sponsor open-source work" /></a>
 </p>
 
 <p align="center">
-  Open to frontend-heavy products, automation-intensive tooling, and technical ideas that need strong execution.
+  <sub>Building from Belo Horizonte, Brazil · Available in Portuguese and English</sub>
 </p>

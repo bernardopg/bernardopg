@@ -49,12 +49,12 @@ This file centralizes the copy and profile settings that should stay aligned acr
   `US$150/month to help cover tooling, hosting, domain, testing hardware, and sustained open-source time.`
 
 - Suggested featured repositories:
+  `AiOverviewControl`
+  `ioruba`
+  `LASCMMG`
   `BeBitter`
-  `doctoralia-scrapper`
-  `mvp-estetoscopio`
   `cmmg-calendar`
-  `arduino-audio-controller`
-  `iaruba`
+  `doctoralia-scrapper`
 
 - Suggested tiers:
   `$5/month`
@@ -122,5 +122,8 @@ This file centralizes the copy and profile settings that should stay aligned acr
 
 - GitHub profile fields were updated successfully on `2026-03-06`.
 - GitHub Sponsors tiers were created and published successfully on `2026-03-06`.
+- GitHub profile narrative, featured work, local SVG identity, and Actions automation were audited against the live profile, all public repositories, and the portfolio on `2026-07-13`.
+- Profile assets use the same purple/cyan visual direction as BeBitter and are stored locally to avoid a runtime dependency on third-party banner services.
+- Dynamic metrics and contribution assets are generated with read-only permissions, then published by a separate least-privilege job. All Actions are pinned to full commit SHAs and monitored by Dependabot.
 - The public GitHub GraphQL schema currently exposes `createSponsorsListing`, but not an `updateSponsorsListing` mutation, so the existing Sponsors listing text still needs the web dashboard if you want to replace the default short description and full description.
 - The copy above remains the source of truth for GitHub Sponsors, LinkedIn, and short social bios.

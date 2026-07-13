@@ -1,0 +1,122 @@
+name: Validate profile
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "**/*.md"
+      - .github/assets/hero-*.svg
+      - .github/dependabot.yml
+      - .github/workflows/*.yml
+      - .markdownlint-cli2.jsonc
+  push:
+    branches: [main]
+    paths:
+      - "**/*.md"
+      - .github/assets/hero-*.svg
+      - .github/dependabot.yml
+      - .github/workflows/*.yml
+      - .markdownlint-cli2.jsonc
+  schedule:
+    - cron: "17 9 * * 1"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: profile-quality-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  markdown:
+    name: Markdown
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+
+      - name: Lint Markdown
+        uses: DavidAnson/markdownlint-cli2-action@8de2aa07cae85fd17c0b35642db70cf5495f1d25 # v24.0.0
+        with:
+          config: .markdownlint-cli2.jsonc
+          globs: |
+            README.md
+            docs/**/*.md
+
+  workflows:
+    name: Workflows and SVG
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+
+      - name: Set up Go
+        uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16 # v6.5.0
+        with:
+          go-version: 1.26.x
+          cache: false
+
+      - name: Install actionlint
+        shell: bash
+        run: go install github.com/rhysd/actionlint/cmd/actionlint@v1.7.12
+
+      - name: Validate GitHub Actions workflows
+        shell: bash
+        run: actionlint
+
+      - name: Validate static SVG assets
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from xml.etree import ElementTree
+
+          for asset in Path(".github/assets").glob("hero-*.svg"):
+              ElementTree.parse(asset)
+              print(f"Validated {asset}")
+          PY
+
+  links:
+    name: Links
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+
+      - name: Check links
+        uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
+        with:
+          args: >-
+            --verbose
+            --no-progress
+            --max-retries 3
+            --exclude '^https://(www\.)?linkedin\.com/'
+            --exclude '^https://(www\.)?instagram\.com/'
+            --exclude '^https://x\.com/'
+            --exclude '^https://vm\.tiktok\.com/'
+            --exclude '^https://bebitterbebetter\.com\.br/'
+            README.md
+            docs/PRESENCE_KIT.md
+          fail: true
+
+      - name: Check portfolio endpoints
+        shell: bash
+        run: |
+          curl --fail --location --retry 3 --silent --show-error \
+            --connect-timeout 10 --max-time 30 \
+            https://bebitterbebetter.com.br/ > /dev/null
+          curl --fail --location --retry 3 --silent --show-error \
+            --connect-timeout 10 --max-time 30 \
+            https://bebitterbebetter.com.br/services > /dev/null
