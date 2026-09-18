@@ -96,6 +96,7 @@ jobs:
           persist-credentials: false
 
       - name: 📈 Cartão de atividade e comunidade
+        continue-on-error: true
         uses: lowlighter/metrics@65836723097537a54cd8eb90f61839426b4266b6 # v3.34
         with:
           token: ${{ secrets.METRICS_TOKEN || secrets.GITHUB_TOKEN }}
@@ -112,6 +113,7 @@ jobs:
           plugin_stars: no
 
       - name: 🧬 Cartão de linguagens
+        continue-on-error: true
         uses: lowlighter/metrics@65836723097537a54cd8eb90f61839426b4266b6 # v3.34
         with:
           token: ${{ secrets.METRICS_TOKEN || secrets.GITHUB_TOKEN }}
@@ -237,7 +239,9 @@ jobs:
   publish:
     name: 🚢 Publicar
     needs: [metrics, animations]
-    if: ${{ !inputs.skip_publish }}
+    # publica mesmo se um cartão falhar: os que renderizaram entram,
+    # os que falharam mantêm a versão anterior (ou o placeholder)
+    if: ${{ !cancelled() && !inputs.skip_publish }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:

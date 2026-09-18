@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="810" height="400" viewBox="0 0 810 400" role="img" aria-label="Cartão de métricas sendo gerado pelo CI" font-family="Inter, ui-sans-serif, system-ui, sans-serif">
+  <defs>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#A78BFA"/>
+      <stop offset="0.5" stop-color="#22D3EE"/>
+      <stop offset="1" stop-color="#34D399"/>
+      <animateTransform attributeName="gradientTransform" type="translate" values="-0.5 0; 0.5 0; -0.5 0" dur="6s" repeatCount="indefinite"/>
+    </linearGradient>
+  </defs>
+  <rect width="810" height="400" rx="18" fill="#0F172A" fill-opacity="0.92" stroke="#334155" stroke-opacity="0.6"/>
+  <rect x="0" y="0" width="810" height="6" rx="3" fill="url(#accent)"/>
+  <g transform="translate(405 170)" text-anchor="middle">
+    <text y="-8" fill="#94A3B8" font-size="15" font-weight="700" letter-spacing="4">GERANDO PELO CI</text>
+    <text y="26" fill="#E2E8F0" font-size="19" font-weight="600">Primeira renderização em andamento…</text>
+    <text y="54" fill="#64748B" font-size="13">Este cartão será substituído automaticamente pelo workflow de assets.</text>
+  </g>
+  <rect x="245" y="268" width="320" height="4" rx="2" fill="#334155"/>
+  <rect x="245" y="268" width="320" height="4" rx="2" fill="url(#accent)" stroke-dasharray="80 240">
+    <animate attributeName="x" values="245;565;-320" dur="2.2s" repeatCount="indefinite"/>
+  </rect>
+</svg>
