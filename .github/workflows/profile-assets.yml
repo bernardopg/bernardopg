@@ -134,10 +134,30 @@ jobs:
           plugin_languages_recent_days: 30
           plugin_languages_analysis_timeout: 15
           plugin_languages_analysis_timeout_repositories: 7.5
+
+      - name: 📤 Guardar cartão de linguagens
+        continue-on-error: true
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: asset-metrics-languages
+          path: /metrics_renders/.github/assets/metrics.languages.svg
+          if-no-files-found: warn
+          retention-days: 1
           # Não conto lockfiles, build output nem assets como "linguagem"
           plugin_languages_ignored: >-
             html, css, scss, makefile, dockerfile, batchfile,
             objective-c, objective-c++, roff, gnuplot
+
+      # upload imediato: rodadas seguintes do docker limpam /metrics_renders,
+      # então cada cartão é guardado na hora em que é renderizado
+      - name: 📤 Guardar cartão de atividade
+        continue-on-error: true
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: asset-metrics-base
+          path: /metrics_renders/.github/assets/metrics.base.svg
+          if-no-files-found: warn
+          retention-days: 1
 
       - name: 🗓️ Cartão de hábitos e ritmo
         continue-on-error: true
@@ -156,6 +176,15 @@ jobs:
           plugin_habits_charts: yes
           plugin_habits_trim: yes
 
+      - name: 📤 Guardar cartão de hábitos
+        continue-on-error: true
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: asset-metrics-habits
+          path: /metrics_renders/.github/assets/metrics.habits.svg
+          if-no-files-found: warn
+          retention-days: 1
+
       - name: 🌤️ Cartão de calendário isométrico
         continue-on-error: true
         uses: lowlighter/metrics@65836723097537a54cd8eb90f61839426b4266b6 # v3.34
@@ -169,14 +198,16 @@ jobs:
           plugin_isocalendar: yes
           plugin_isocalendar_duration: full-year
 
-      - name: 📤 Guardar cartões
+      - name: 📤 Guardar cartão de calendário
+        continue-on-error: true
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: asset-metrics
-          path: /metrics_renders/${{ env.ASSETS_DIR }}/*.svg
-          if-no-files-found: error
-          include-hidden-files: true
+          name: asset-metrics-calendar
+          path: /metrics_renders/.github/assets/metrics.calendar.svg
+          if-no-files-found: warn
           retention-days: 1
+
+      - name: 📤 Guardar cartões
 
   # ───────────────────────────────────────────────────────────────────
   # 2 · Animações do gráfico de contribuições (rodam em paralelo)
@@ -200,21 +231,14 @@ jobs:
             dist/snake.svg?palette=github-light&color_snake=${{ env.ACCENT_VIOLET }}&color_dots=#ebedf0,#ddd6fe,#c4b5fd,#8b5cf6,#06b6d4
             dist/snake-dark.svg?palette=github-dark&color_snake=${{ env.ACCENT_CYAN }}&color_dots=#161b22,#312e81,#5b21b6,#7c3aed,#22d3ee
 
-      - name: 🧩 Carregar tema do 3D (env SETTING_JSON)
-        shell: bash
-        run: |
-          {
-            echo 'SETTING_JSON<<EOF_3D_THEME'
-            cat .github/3d-contrib-settings.json
-            echo 'EOF_3D_THEME'
-          } >> "$GITHUB_ENV"
-
       - name: 🧊 Calendário de contribuições em 3D
         continue-on-error: true
         uses: yoshi389111/github-profile-3d-contrib@7d95e7d4cdc028dd1e1cbd957d65f35efb12ae39 # v0.9.3
         env:
           GITHUB_TOKEN: ${{ secrets.METRICS_TOKEN || secrets.GITHUB_TOKEN }}
           USERNAME: ${{ github.repository_owner }}
+          # na v0.9.3 SETTING_JSON é um CAMINHO de arquivo, não o JSON inline
+          SETTING_JSON: .github/3d-contrib-settings.json
 
       - name: 🧹 Normalizar nomes dos arquivos
         shell: bash
