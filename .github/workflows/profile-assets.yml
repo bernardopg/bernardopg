@@ -108,8 +108,6 @@ jobs:
           config_display: large
           repositories_forks: no
           repositories_affiliations: owner, collaborator, organization_member
-          plugin_lines: yes
-          plugin_lines_sections: base
           plugin_stars: no
 
       - name: 🧬 Cartão de linguagens
