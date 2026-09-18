@@ -1,4 +1,7 @@
-name: Validate profile
+name: ✅ Validar perfil
+
+# Portão de qualidade do README: Markdown limpo, workflows válidos,
+# SVG que abre de verdade e nenhum link quebrado apontando para projeto morto.
 
 on:
   workflow_dispatch:
@@ -6,6 +9,7 @@ on:
     paths:
       - "**/*.md"
       - .github/assets/hero-*.svg
+      - .github/3d-contrib-settings.json
       - .github/dependabot.yml
       - .github/workflows/*.yml
       - .markdownlint-cli2.jsonc
@@ -14,10 +18,12 @@ on:
     paths:
       - "**/*.md"
       - .github/assets/hero-*.svg
+      - .github/3d-contrib-settings.json
       - .github/dependabot.yml
       - .github/workflows/*.yml
       - .markdownlint-cli2.jsonc
   schedule:
+    # Segunda de manhã: pega link que morreu durante a semana
     - cron: "17 9 * * 1"
 
 permissions:
@@ -29,17 +35,17 @@ concurrency:
 
 jobs:
   markdown:
-    name: Markdown
+    name: 📝 Markdown
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: 📦 Checkout
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           persist-credentials: false
 
-      - name: Lint Markdown
+      - name: 🧹 Lint
         uses: DavidAnson/markdownlint-cli2-action@21c1be1b93ad9ed58fa840aacc3f279cde2a72ff # v24.2.0
         with:
           config: .markdownlint-cli2.jsonc
@@ -48,54 +54,86 @@ jobs:
             docs/**/*.md
 
   workflows:
-    name: Workflows and SVG
+    name: ⚙️ Workflows e SVG
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: 📦 Checkout
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           persist-credentials: false
 
-      - name: Set up Go
+      - name: 🐹 Go
         uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
         with:
           go-version: 1.26.x
           cache: false
 
-      - name: Install actionlint
+      - name: 📥 Instalar actionlint
         shell: bash
         run: go install github.com/rhysd/actionlint/cmd/actionlint@v1.7.12
 
-      - name: Validate GitHub Actions workflows
+      - name: 🔬 Validar workflows
         shell: bash
         run: actionlint
 
-      - name: Validate static SVG assets
+      - name: 🖼️ Validar SVG e acessibilidade
         shell: bash
         run: |
           python - <<'PY'
+          import sys
           from pathlib import Path
           from xml.etree import ElementTree
 
-          for asset in Path(".github/assets").glob("hero-*.svg"):
-              ElementTree.parse(asset)
-              print(f"Validated {asset}")
+          SVG = "{http://www.w3.org/2000/svg}"
+          problems, checked = [], 0
+
+          for asset in sorted(Path(".github/assets").glob("hero-*.svg")):
+              checked += 1
+              try:
+                  root = ElementTree.parse(asset).getroot()
+              except ElementTree.ParseError as exc:
+                  problems.append(f"{asset}: XML inválido — {exc}")
+                  continue
+
+              # leitores de tela dependem destes dois nós
+              for tag in ("title", "desc"):
+                  if root.find(f"{SVG}{tag}") is None:
+                      problems.append(f"{asset}: falta <{tag}> para acessibilidade")
+
+              if root.get("viewBox") != "0 0 1280 400":
+                  problems.append(f"{asset}: viewBox esperado '0 0 1280 400'")
+
+              size = asset.stat().st_size / 1024
+              if size > 120:
+                  problems.append(f"{asset}: {size:.0f} KiB — pesado demais para um hero")
+
+              print(f"ok  {asset}  ({size:.1f} KiB)")
+
+          if not checked:
+              sys.exit("Nenhum hero SVG encontrado.")
+          if problems:
+              sys.exit("\n".join(f"✗ {p}" for p in problems))
+          print(f"\n{checked} hero(s) validado(s).")
           PY
 
+      - name: 🧾 Validar settings do 3D contrib
+        shell: bash
+        run: python -c "import json,pathlib;json.loads(pathlib.Path('.github/3d-contrib-settings.json').read_text());print('ok')"
+
   links:
-    name: Links
+    name: 🔗 Links
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: 📦 Checkout
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           persist-credentials: false
 
-      - name: Check links
+      - name: 🔍 Checar links
         uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
         with:
           args: >-
@@ -108,15 +146,33 @@ jobs:
             --exclude '^https://vm\.tiktok\.com/'
             --exclude '^https://bebitterbebetter\.com\.br/'
             README.md
-            docs/PRESENCE_KIT.md
+            docs/**/*.md
           fail: true
 
-      - name: Check portfolio endpoints
+      - name: 🚫 Barrar projetos descontinuados
         shell: bash
         run: |
-          curl --fail --location --retry 3 --silent --show-error \
-            --connect-timeout 10 --max-time 30 \
-            https://bebitterbebetter.com.br/ > /dev/null
-          curl --fail --location --retry 3 --silent --show-error \
-            --connect-timeout 10 --max-time 30 \
-            https://bebitterbebetter.com.br/services > /dev/null
+          # Estes repositórios foram arquivados e migraram para o Scalpel.
+          # Se voltarem como link ativo no README, o perfil desatualiza de novo.
+          ARCHIVED="cmmg-calendar mvp-estetoscopio scalpel-project cardio-audit archinho"
+          status=0
+
+          for repo in $ARCHIVED; do
+            if grep -qE "github\.com/bernardopg/${repo}\b" README.md; then
+              echo "::error file=README.md::'${repo}' está arquivado — descreva a migração para o Scalpel em vez de linkar." >&2
+              status=1
+            fi
+          done
+
+          [ "$status" -eq 0 ] && echo "✅ Nenhum projeto descontinuado linkado."
+          exit "$status"
+
+      - name: 🌐 Checar portfólio
+        shell: bash
+        run: |
+          for path in "/" "/services"; do
+            curl --fail --location --retry 3 --silent --show-error \
+              --connect-timeout 10 --max-time 30 \
+              "https://bebitterbebetter.com.br${path}" > /dev/null \
+              && echo "✅ ${path}" || { echo "❌ ${path}"; exit 1; }
+          done

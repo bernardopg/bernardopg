@@ -1,12 +1,29 @@
-name: Refresh profile assets
+name: 🎨 Atualizar assets do perfil
+
+# Por que commitar SVG em vez de apontar para serviço externo?
+#  • o README nunca quebra se o serviço cair ou for rate-limited
+#  • o GitHub faz proxy (camo) das imagens — SVG local carrega na hora
+#  • o histórico do repositório vira um registro visual da evolução do perfil
+#
+# ⚠️ IMPORTANTE — leia docs/PROFILE_SETUP.md
+# O `secrets.GITHUB_TOKEN` padrão só enxerga ESTE repositório. Sem um PAT,
+# o lowlighter/metrics reporta "1 Repository / 0 Languages / No push activity".
+# Crie o secret METRICS_TOKEN (PAT clássico, escopos `public_repo` + `read:user`)
+# para que as estatísticas contemplem todos os repositórios.
 
 on:
   workflow_dispatch:
+    inputs:
+      skip_publish:
+        description: "Só gerar os assets (sem commitar)"
+        type: boolean
+        default: false
   push:
     branches: [main]
     paths:
       - .github/workflows/profile-assets.yml
   schedule:
+    # 06:23 UTC ≈ 03:23 em São Paulo — fora do pico da API do GitHub
     - cron: "23 6 * * *"
 
 permissions:
@@ -16,121 +33,253 @@ concurrency:
   group: profile-assets-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  ASSETS_DIR: .github/assets
+  TIMEZONE: America/Sao_Paulo
+  ACCENT_VIOLET: "#7C3AED"
+  ACCENT_CYAN: "#22D3EE"
+
 jobs:
-  generate:
-    name: Generate SVG assets
+  # ───────────────────────────────────────────────────────────────────
+  # 1 · Cartões de métricas (atividade, linguagens, hábitos, calendário)
+  # ───────────────────────────────────────────────────────────────────
+  metrics:
+    name: 📊 Métricas
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: 🔎 Conferir token de métricas
+        id: token
+        env:
+          METRICS_TOKEN: ${{ secrets.METRICS_TOKEN }}
+        shell: bash
+        run: |
+          if [ -n "$METRICS_TOKEN" ]; then
+            echo "scope=completo" >> "$GITHUB_OUTPUT"
+            {
+              echo "### ✅ METRICS_TOKEN encontrado"
+              echo "As métricas cobrem **todos** os repositórios públicos."
+            } >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "scope=limitado" >> "$GITHUB_OUTPUT"
+            {
+              echo "### ⚠️ METRICS_TOKEN ausente"
+              echo "Usando \`GITHUB_TOKEN\`, que enxerga apenas este repositório."
+              echo "Resultado esperado: \`1 Repository\`, \`0 Languages\`, \`No push activity found\`."
+              echo ""
+              echo "👉 Como resolver: [docs/PROFILE_SETUP.md](../blob/main/docs/PROFILE_SETUP.md)"
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: 📦 Checkout
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           persist-credentials: false
 
-      - name: Generate profile metrics
+      - name: 📈 Cartão de atividade e comunidade
         uses: lowlighter/metrics@65836723097537a54cd8eb90f61839426b4266b6 # v3.34
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.METRICS_TOKEN || secrets.GITHUB_TOKEN }}
           user: ${{ github.repository_owner }}
-          filename: .github/assets/metrics.base.svg
+          filename: ${{ env.ASSETS_DIR }}/metrics.base.svg
           output_action: none
-          base: header,activity,community,repositories,metadata
-          config_timezone: America/Sao_Paulo
+          base: header, activity, community, repositories, metadata
+          config_timezone: ${{ env.TIMEZONE }}
+          config_display: large
           repositories_forks: no
-          repositories_affiliations: owner
+          repositories_affiliations: owner, collaborator, organization_member
+          plugin_lines: yes
+          plugin_lines_sections: base
+          plugin_stars: no
 
-      - name: Generate language metrics
+      - name: 🧬 Cartão de linguagens
         uses: lowlighter/metrics@65836723097537a54cd8eb90f61839426b4266b6 # v3.34
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.METRICS_TOKEN || secrets.GITHUB_TOKEN }}
           user: ${{ github.repository_owner }}
-          filename: .github/assets/metrics.languages.svg
+          filename: ${{ env.ASSETS_DIR }}/metrics.languages.svg
           output_action: none
           base: ""
-          config_timezone: America/Sao_Paulo
+          config_timezone: ${{ env.TIMEZONE }}
           repositories_forks: no
-          repositories_affiliations: owner
+          repositories_affiliations: owner, collaborator, organization_member
           plugin_languages: yes
-          plugin_languages_sections: most-used
-          plugin_languages_details: bytes-size,percentage
-          plugin_languages_limit: 8
+          plugin_languages_sections: most-used, recently-used
+          plugin_languages_details: bytes-size, percentage
+          plugin_languages_limit: 10
           plugin_languages_threshold: 0%
           plugin_languages_other: yes
           plugin_languages_indepth: yes
+          plugin_languages_recent_days: 30
           plugin_languages_analysis_timeout: 15
           plugin_languages_analysis_timeout_repositories: 7.5
+          # Não conto lockfiles, build output nem assets como "linguagem"
+          plugin_languages_ignored: >-
+            html, css, scss, makefile, dockerfile, batchfile,
+            objective-c, objective-c++, roff, gnuplot
 
-      - name: Collect generated metrics
-        shell: bash
-        run: |
-          mkdir -p .github/assets
-          cp -r /metrics_renders/.github/assets/. .github/assets/
-
-      - name: Generate contribution animations
-        uses: Platane/snk/svg-only@d8f6715049803e982ee5ff501b6b9b7d5deeb09b # v3.5.0
+      - name: 🗓️ Cartão de hábitos e ritmo
+        continue-on-error: true
+        uses: lowlighter/metrics@65836723097537a54cd8eb90f61839426b4266b6 # v3.34
         with:
-          github_user_name: ${{ github.repository_owner }}
-          outputs: |
-            .github/assets/snake.svg?palette=github-light&color_snake=#7C3AED&color_dots=#ebedf0,#ddd6fe,#c4b5fd,#8b5cf6,#06b6d4
-            .github/assets/snake-dark.svg?palette=github-dark&color_snake=#22D3EE&color_dots=#161b22,#312e81,#5b21b6,#7c3aed,#22d3ee
+          token: ${{ secrets.METRICS_TOKEN || secrets.GITHUB_TOKEN }}
+          user: ${{ github.repository_owner }}
+          filename: ${{ env.ASSETS_DIR }}/metrics.habits.svg
+          output_action: none
+          base: ""
+          config_timezone: ${{ env.TIMEZONE }}
+          plugin_habits: yes
+          plugin_habits_from: 200
+          plugin_habits_days: 14
+          plugin_habits_facts: yes
+          plugin_habits_charts: yes
+          plugin_habits_trim: yes
 
-      - name: Upload generated assets
+      - name: 🌤️ Cartão de calendário isométrico
+        continue-on-error: true
+        uses: lowlighter/metrics@65836723097537a54cd8eb90f61839426b4266b6 # v3.34
+        with:
+          token: ${{ secrets.METRICS_TOKEN || secrets.GITHUB_TOKEN }}
+          user: ${{ github.repository_owner }}
+          filename: ${{ env.ASSETS_DIR }}/metrics.calendar.svg
+          output_action: none
+          base: ""
+          config_timezone: ${{ env.TIMEZONE }}
+          plugin_isocalendar: yes
+          plugin_isocalendar_duration: full-year
+
+      - name: 📤 Guardar cartões
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: profile-assets
-          path: |
-            .github/assets/metrics.base.svg
-            .github/assets/metrics.languages.svg
-            .github/assets/snake.svg
-            .github/assets/snake-dark.svg
+          name: asset-metrics
+          path: /metrics_renders/${{ env.ASSETS_DIR }}/*.svg
           if-no-files-found: error
           include-hidden-files: true
           retention-days: 1
 
+  # ───────────────────────────────────────────────────────────────────
+  # 2 · Animações do gráfico de contribuições (rodam em paralelo)
+  # ───────────────────────────────────────────────────────────────────
+  animations:
+    name: 🐍 Animações
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: 🐍 Cobrinha comendo as contribuições
+        uses: Platane/snk/svg-only@d8f6715049803e982ee5ff501b6b9b7d5deeb09b # v3.5.0
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            dist/snake.svg?palette=github-light&color_snake=${{ env.ACCENT_VIOLET }}&color_dots=#ebedf0,#ddd6fe,#c4b5fd,#8b5cf6,#06b6d4
+            dist/snake-dark.svg?palette=github-dark&color_snake=${{ env.ACCENT_CYAN }}&color_dots=#161b22,#312e81,#5b21b6,#7c3aed,#22d3ee
+
+      - name: 🧊 Calendário de contribuições em 3D
+        continue-on-error: true
+        uses: yoshi389111/github-profile-3d-contrib@7d95e7d4cdc028dd1e1cbd957d65f35efb12ae39 # v0.9.3
+        env:
+          GITHUB_TOKEN: ${{ secrets.METRICS_TOKEN || secrets.GITHUB_TOKEN }}
+          USERNAME: ${{ github.repository_owner }}
+        with:
+          settings_json: .github/3d-contrib-settings.json
+
+      - name: 🧹 Normalizar nomes dos arquivos
+        shell: bash
+        run: |
+          mkdir -p dist
+          # o 3d-contrib grava em profile-3d-contrib/ com nomes variados
+          if [ -f profile-3d-contrib/profile-night-rainbow.svg ]; then
+            cp profile-3d-contrib/profile-night-rainbow.svg dist/contributions-3d.svg
+          elif [ -f profile-3d-contrib/profile-season-animate.svg ]; then
+            cp profile-3d-contrib/profile-season-animate.svg dist/contributions-3d.svg
+          fi
+          ls -lh dist/
+
+      - name: 📤 Guardar animações
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: asset-animations
+          path: dist/*.svg
+          if-no-files-found: error
+          retention-days: 1
+
+  # ───────────────────────────────────────────────────────────────────
+  # 3 · Publicação — um único commit com tudo
+  # ───────────────────────────────────────────────────────────────────
   publish:
-    name: Publish SVG assets
-    needs: generate
+    name: 🚢 Publicar
+    needs: [metrics, animations]
+    if: ${{ !inputs.skip_publish }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:
       contents: write
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: 📦 Checkout
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           fetch-depth: 0
 
-      - name: Download generated assets
+      - name: 📥 Recolher os assets gerados
         uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with:
-          name: profile-assets
-          path: .github/assets
+          pattern: asset-*
+          merge-multiple: true
+          path: ${{ env.ASSETS_DIR }}
 
-      - name: Commit refreshed assets
+      - name: ✅ Validar SVG antes de commitar
+        shell: bash
+        run: |
+          python - <<'PY'
+          import sys
+          from pathlib import Path
+          from xml.etree import ElementTree
+
+          assets = sorted(Path(".github/assets").glob("*.svg"))
+          if not assets:
+              sys.exit("Nenhum SVG encontrado — abortando.")
+
+          broken = []
+          for asset in assets:
+              try:
+                  ElementTree.parse(asset)
+              except ElementTree.ParseError as exc:
+                  broken.append(f"{asset}: {exc}")
+              else:
+                  print(f"ok  {asset}  ({asset.stat().st_size / 1024:.1f} KiB)")
+
+          if broken:
+              sys.exit("SVG inválido:\n" + "\n".join(broken))
+          PY
+
+      - name: 💾 Commitar o que mudou
         env:
           TARGET_BRANCH: ${{ github.event.repository.default_branch }}
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add .github/assets/metrics.base.svg .github/assets/metrics.languages.svg
-          git add .github/assets/snake.svg .github/assets/snake-dark.svg
-          git diff --cached --quiet && exit 0
-          git commit -m "chore: refresh profile assets [skip ci]"
+
+          # Os heroes são feitos à mão: nunca sobrescrever
+          git add "${ASSETS_DIR}" ':!*/hero-*.svg'
+
+          if git diff --cached --quiet; then
+            echo "🟰 Nada mudou hoje." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+
+          git diff --cached --name-only | sed 's/^/- /' >> "$GITHUB_STEP_SUMMARY"
+          git commit -m "chore(assets): atualiza gráficos do perfil [skip ci]"
 
           for attempt in 1 2 3; do
-            if git pull --rebase origin "$TARGET_BRANCH"; then
-              git push origin "HEAD:$TARGET_BRANCH" && exit 0
-            else
-              git rebase --abort || true
+            if git pull --rebase origin "$TARGET_BRANCH" && \
+               git push origin "HEAD:$TARGET_BRANCH"; then
+              echo "✅ Assets publicados." >> "$GITHUB_STEP_SUMMARY"
+              exit 0
             fi
-
-            if [ "$attempt" -eq 3 ]; then
-              echo "Failed to publish refreshed profile assets after 3 attempts." >&2
-              exit 1
-            fi
-
-            sleep 5
+            git rebase --abort || true
+            [ "$attempt" -eq 3 ] && { echo "❌ Falha ao publicar após 3 tentativas." >&2; exit 1; }
+            sleep $((attempt * 5))
           done

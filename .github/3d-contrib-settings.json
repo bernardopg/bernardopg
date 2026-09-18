@@ -1,0 +1,13 @@
+{
+  "$schema": "https://raw.githubusercontent.com/yoshi389111/github-profile-3d-contrib/main/schema/settings.schema.json",
+  "type": "season",
+  "growingAnimation": true,
+  "backgroundColor": "#05070F",
+  "foregroundColor": "#E2E8F0",
+  "radiusStart": 2,
+  "radiusEnd": 6,
+  "contribLevel1": "#312E81",
+  "contribLevel2": "#5B21B6",
+  "contribLevel3": "#7C3AED",
+  "contribLevel4": "#22D3EE"
+}
