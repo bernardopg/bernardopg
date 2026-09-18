@@ -117,8 +117,7 @@ Também mantenho:
 </div>
 
 <div align="center">
-  <img src="./.github/assets/metrics.habits.svg" alt="Hábitos de commit e ritmo de trabalho" width="49%" />
-  <img src="./.github/assets/metrics.calendar.svg" alt="Calendário de contribuições dos últimos 12 meses" width="49%" />
+  <img src="./.github/assets/metrics.calendar.svg" alt="Calendário isométrico de contribuições dos últimos 12 meses" width="66%" />
 </div>
 
 <div align="center">

@@ -41,7 +41,7 @@ env:
 
 jobs:
   # ───────────────────────────────────────────────────────────────────
-  # 1 · Cartões de métricas (atividade, linguagens, hábitos, calendário)
+  # 1 · Cartões de métricas (atividade, linguagens, calendário)
   # ───────────────────────────────────────────────────────────────────
   metrics:
     name: 📊 Métricas
@@ -50,13 +50,11 @@ jobs:
 
     steps:
       - name: 🔎 Conferir token de métricas
-        id: token
         env:
           METRICS_TOKEN: ${{ secrets.METRICS_TOKEN }}
         shell: bash
         run: |
           if [ -z "$METRICS_TOKEN" ]; then
-            echo "scope=limitado" >> "$GITHUB_OUTPUT"
             {
               echo "### ⚠️ METRICS_TOKEN ausente"
               echo "Usando \`GITHUB_TOKEN\`, que enxerga apenas este repositório."
@@ -76,7 +74,6 @@ jobs:
             | grep -c '"full_name"' || true)
 
           if [ "$STATUS" = "200" ]; then
-            echo "scope=completo" >> "$GITHUB_OUTPUT"
             {
               echo "### ✅ METRICS_TOKEN válido"
               echo "API respondeu \`200\` e enxerga **$REPOS repositórios**."
@@ -95,6 +92,9 @@ jobs:
         with:
           persist-credentials: false
 
+      # Cada cartão tem seu próprio upload: rodadas seguintes do docker
+      # limpam /metrics_renders, apagando SVGs de cartões anteriores.
+
       - name: 📈 Cartão de atividade e comunidade
         continue-on-error: true
         uses: lowlighter/metrics@65836723097537a54cd8eb90f61839426b4266b6 # v3.34
@@ -110,6 +110,15 @@ jobs:
           repositories_affiliations: owner, collaborator, organization_member
           plugin_stars: no
 
+      - name: 📤 Guardar cartão de atividade
+        continue-on-error: true
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: asset-metrics-base
+          path: /metrics_renders/.github/assets/metrics.base.svg
+          if-no-files-found: warn
+          retention-days: 1
+
       - name: 🧬 Cartão de linguagens
         continue-on-error: true
         uses: lowlighter/metrics@65836723097537a54cd8eb90f61839426b4266b6 # v3.34
@@ -120,18 +129,19 @@ jobs:
           output_action: none
           base: ""
           config_timezone: ${{ env.TIMEZONE }}
+          # sem indepth: clonar dezenas de repos estoura o timeout e zera a contagem
           repositories_forks: no
-          repositories_affiliations: owner, collaborator, organization_member
+          repositories_affiliations: owner
           plugin_languages: yes
-          plugin_languages_sections: most-used, recently-used
+          plugin_languages_sections: most-used
           plugin_languages_details: bytes-size, percentage
-          plugin_languages_limit: 10
+          plugin_languages_limit: 8
           plugin_languages_threshold: 0%
           plugin_languages_other: yes
-          plugin_languages_indepth: yes
-          plugin_languages_recent_days: 30
-          plugin_languages_analysis_timeout: 15
-          plugin_languages_analysis_timeout_repositories: 7.5
+          # Não conto lockfiles, build output nem assets como "linguagem"
+          plugin_languages_ignored: >-
+            html, css, scss, makefile, dockerfile, batchfile,
+            objective-c, objective-c++, roff, gnuplot
 
       - name: 📤 Guardar cartão de linguagens
         continue-on-error: true
@@ -141,24 +151,13 @@ jobs:
           path: /metrics_renders/.github/assets/metrics.languages.svg
           if-no-files-found: warn
           retention-days: 1
-          # Não conto lockfiles, build output nem assets como "linguagem"
-          plugin_languages_ignored: >-
-            html, css, scss, makefile, dockerfile, batchfile,
-            objective-c, objective-c++, roff, gnuplot
 
-      # upload imediato: rodadas seguintes do docker limpam /metrics_renders,
-      # então cada cartão é guardado na hora em que é renderizado
-      - name: 📤 Guardar cartão de atividade
-        continue-on-error: true
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
-        with:
-          name: asset-metrics-base
-          path: /metrics_renders/.github/assets/metrics.base.svg
-          if-no-files-found: warn
-          retention-days: 1
-
-      - name: 🗓️ Cartão de hábitos e ritmo
-        continue-on-error: true
+      # Desativado: bug do plugin habits ao processar commits de bot
+      # (TypeError: Cannot destructure property 'author' of undefined),
+      # e este repositório é atualizado pelo github-actions[bot].
+      # Reavaliar em versões futuras do lowlighter/metrics.
+      - name: 🗓️ Cartão de hábitos e ritmo (desativado)
+        if: false
         uses: lowlighter/metrics@65836723097537a54cd8eb90f61839426b4266b6 # v3.34
         with:
           token: ${{ secrets.METRICS_TOKEN || secrets.GITHUB_TOKEN }}
@@ -173,15 +172,6 @@ jobs:
           plugin_habits_facts: yes
           plugin_habits_charts: yes
           plugin_habits_trim: yes
-
-      - name: 📤 Guardar cartão de hábitos
-        continue-on-error: true
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
-        with:
-          name: asset-metrics-habits
-          path: /metrics_renders/.github/assets/metrics.habits.svg
-          if-no-files-found: warn
-          retention-days: 1
 
       - name: 🌤️ Cartão de calendário isométrico
         continue-on-error: true
@@ -255,7 +245,7 @@ jobs:
         with:
           name: asset-animations
           path: dist/*.svg
-          if-no-files-found: error
+          if-no-files-found: warn
           retention-days: 1
 
   # ───────────────────────────────────────────────────────────────────

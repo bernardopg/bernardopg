@@ -91,8 +91,11 @@ Vantagens:
 | `hero-dark.svg` · `hero-light.svg` | **feito à mão** — o workflow nunca sobrescreve | manual |
 | `metrics.base.svg` | `lowlighter/metrics` · base + activity + community | diário |
 | `metrics.languages.svg` | `lowlighter/metrics` · plugin `languages` (indepth) | diário |
-| `metrics.habits.svg` | `lowlighter/metrics` · plugin `habits` | diário |
 | `metrics.calendar.svg` | `lowlighter/metrics` · plugin `isocalendar` | diário |
+
+> `metrics.habits.svg` foi desativado: o plugin `habits` quebra com commits de bot
+> (bug conhecido de destruturação), e este repo é atualizado pelo `github-actions[bot]`.
+> O passo permanece no workflow com `if: false` para reavaliação futura.
 | `contributions-3d.svg` | `yoshi389111/github-profile-3d-contrib` | diário |
 | `snake.svg` · `snake-dark.svg` | `Platane/snk` | diário |
 
