@@ -152,26 +152,26 @@ jobs:
           if-no-files-found: warn
           retention-days: 1
 
-      # Desativado: bug do plugin habits ao processar commits de bot
-      # (TypeError: Cannot destructure property 'author' of undefined),
-      # e este repositório é atualizado pelo github-actions[bot].
-      # Reavaliar em versões futuras do lowlighter/metrics.
-      - name: 🗓️ Cartão de hábitos e ritmo (desativado)
-        if: false
-        uses: lowlighter/metrics@65836723097537a54cd8eb90f61839426b4266b6 # v3.34
-        with:
-          token: ${{ secrets.METRICS_TOKEN || secrets.GITHUB_TOKEN }}
-          user: ${{ github.repository_owner }}
-          filename: ${{ env.ASSETS_DIR }}/metrics.habits.svg
-          output_action: none
-          base: ""
-          config_timezone: ${{ env.TIMEZONE }}
-          plugin_habits: yes
-          plugin_habits_from: 200
-          plugin_habits_days: 14
-          plugin_habits_facts: yes
-          plugin_habits_charts: yes
-          plugin_habits_trim: yes
+#       # Desativado: bug do plugin habits ao processar commits de bot
+#       # (TypeError: Cannot destructure property 'author' of undefined),
+#       # e este repositório é atualizado pelo github-actions[bot].
+#       # Reavaliar em versões futuras do lowlighter/metrics.
+#       - name: 🗓️ Cartão de hábitos e ritmo (desativado)
+#         if: false
+#         uses: lowlighter/metrics@65836723097537a54cd8eb90f61839426b4266b6 # v3.34
+#         with:
+#           token: ${{ secrets.METRICS_TOKEN || secrets.GITHUB_TOKEN }}
+#           user: ${{ github.repository_owner }}
+#           filename: ${{ env.ASSETS_DIR }}/metrics.habits.svg
+#           output_action: none
+#           base: ""
+#           config_timezone: ${{ env.TIMEZONE }}
+#           plugin_habits: yes
+#           plugin_habits_from: 200
+#           plugin_habits_days: 14
+#           plugin_habits_facts: yes
+#           plugin_habits_charts: yes
+#           plugin_habits_trim: yes
 
       - name: 🌤️ Cartão de calendário isométrico
         continue-on-error: true
