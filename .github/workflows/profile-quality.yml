@@ -164,8 +164,11 @@ jobs:
             fi
           done
 
-          [ "$status" -eq 0 ] && echo "✅ Nenhum projeto descontinuado linkado."
-          exit "$status"
+          if [ "$status" -eq 0 ]; then
+            echo "✅ Nenhum projeto descontinuado linkado."
+          else
+            exit "$status"
+          fi
 
       - name: 🌐 Checar portfólio
         shell: bash

@@ -207,8 +207,6 @@ jobs:
           if-no-files-found: warn
           retention-days: 1
 
-      - name: 📤 Guardar cartões
-
   # ───────────────────────────────────────────────────────────────────
   # 2 · Animações do gráfico de contribuições (rodam em paralelo)
   # ───────────────────────────────────────────────────────────────────
