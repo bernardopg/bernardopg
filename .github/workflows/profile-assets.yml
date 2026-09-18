@@ -55,13 +55,7 @@ jobs:
           METRICS_TOKEN: ${{ secrets.METRICS_TOKEN }}
         shell: bash
         run: |
-          if [ -n "$METRICS_TOKEN" ]; then
-            echo "scope=completo" >> "$GITHUB_OUTPUT"
-            {
-              echo "### ✅ METRICS_TOKEN encontrado"
-              echo "As métricas cobrem **todos** os repositórios públicos."
-            } >> "$GITHUB_STEP_SUMMARY"
-          else
+          if [ -z "$METRICS_TOKEN" ]; then
             echo "scope=limitado" >> "$GITHUB_OUTPUT"
             {
               echo "### ⚠️ METRICS_TOKEN ausente"
@@ -70,6 +64,30 @@ jobs:
               echo ""
               echo "👉 Como resolver: [docs/PROFILE_SETUP.md](../blob/main/docs/PROFILE_SETUP.md)"
             } >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+
+          # Auto-teste do secret: o valor gravado responde na API?
+          # (o token em si nunca aparece no log — o Actions o mascara)
+          STATUS=$(curl -s -o /tmp/user.json -w '%{http_code}' \
+            -H "Authorization: Bearer $METRICS_TOKEN" https://api.github.com/user)
+          REPOS=$(curl -s -H "Authorization: Bearer $METRICS_TOKEN" \
+            'https://api.github.com/user/repos?per_page=100&affiliation=owner' \
+            | grep -c '"full_name"' || true)
+
+          if [ "$STATUS" = "200" ]; then
+            echo "scope=completo" >> "$GITHUB_OUTPUT"
+            {
+              echo "### ✅ METRICS_TOKEN válido"
+              echo "API respondeu \`200\` e enxerga **$REPOS repositórios**."
+            } >> "$GITHUB_STEP_SUMMARY"
+          else
+            {
+              echo "### ❌ METRICS_TOKEN gravado, mas rejeitado pela API (HTTP $STATUS)"
+              echo "O valor do secret está corrompido ou o token foi revogado."
+              echo "Rode novamente: \`./scripts/setup-metrics-token.sh\`"
+            } >> "$GITHUB_STEP_SUMMARY"
+            echo "::error::METRICS_TOKEN com HTTP $STATUS — regrave o secret"
           fi
 
       - name: 📦 Checkout
@@ -175,25 +193,34 @@ jobs:
             dist/snake.svg?palette=github-light&color_snake=${{ env.ACCENT_VIOLET }}&color_dots=#ebedf0,#ddd6fe,#c4b5fd,#8b5cf6,#06b6d4
             dist/snake-dark.svg?palette=github-dark&color_snake=${{ env.ACCENT_CYAN }}&color_dots=#161b22,#312e81,#5b21b6,#7c3aed,#22d3ee
 
+      - name: 🧩 Carregar tema do 3D (env SETTING_JSON)
+        shell: bash
+        run: |
+          {
+            echo 'SETTING_JSON<<EOF_3D_THEME'
+            cat .github/3d-contrib-settings.json
+            echo 'EOF_3D_THEME'
+          } >> "$GITHUB_ENV"
+
       - name: 🧊 Calendário de contribuições em 3D
         continue-on-error: true
         uses: yoshi389111/github-profile-3d-contrib@7d95e7d4cdc028dd1e1cbd957d65f35efb12ae39 # v0.9.3
         env:
           GITHUB_TOKEN: ${{ secrets.METRICS_TOKEN || secrets.GITHUB_TOKEN }}
           USERNAME: ${{ github.repository_owner }}
-        with:
-          settings_json: .github/3d-contrib-settings.json
 
       - name: 🧹 Normalizar nomes dos arquivos
         shell: bash
         run: |
           mkdir -p dist
           # o 3d-contrib grava em profile-3d-contrib/ com nomes variados
-          if [ -f profile-3d-contrib/profile-night-rainbow.svg ]; then
-            cp profile-3d-contrib/profile-night-rainbow.svg dist/contributions-3d.svg
-          elif [ -f profile-3d-contrib/profile-season-animate.svg ]; then
-            cp profile-3d-contrib/profile-season-animate.svg dist/contributions-3d.svg
-          fi
+          for candidate in profile-night-rainbow profile-season-animate profile-green-animate \
+                           profile-night-green profile-season profile-green; do
+            if [ -f "profile-3d-contrib/${candidate}.svg" ]; then
+              cp "profile-3d-contrib/${candidate}.svg" dist/contributions-3d.svg
+              break
+            fi
+          done
           ls -lh dist/
 
       - name: 📤 Guardar animações

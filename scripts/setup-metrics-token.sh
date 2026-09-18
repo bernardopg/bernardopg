@@ -7,7 +7,8 @@
 #   é o clique em "Generate token". Todo o resto (URL pré-preenchida, validação
 #   de escopos, gravação do secret, disparo do workflow) está automatizado aqui.
 #
-# Uso:
+#   ⚠️ gh secret set não aceita "--body -": isso gravaria o literal "-".
+#   O valor vai por stdin, sem --body (bug já corrigido aqui — gh 2.101).
 #   ./scripts/setup-metrics-token.sh              # fluxo recomendado (PAT dedicado)
 #   ./scripts/setup-metrics-token.sh --use-gh     # atalho: reaproveita o token do gh
 #   ./scripts/setup-metrics-token.sh --check      # só diagnostica, não altera nada
@@ -147,7 +148,8 @@ ok "Este token enxerga ${bold}${REPO_COUNT}${reset} repositórios (antes: 1)"
 
 # ── Gravar e disparar ───────────────────────────────────────────────────────
 step "Gravando o secret"
-printf '%s' "$TOKEN" | gh secret set "$SECRET" --repo "$REPO" --body -
+# stdin, sem --body: "--body -" gravaria o caractere "-" como valor do secret
+printf '%s' "$TOKEN" | gh secret set "$SECRET" --repo "$REPO"
 ok "$SECRET gravado em $REPO"
 unset TOKEN
 
