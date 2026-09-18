@@ -173,9 +173,15 @@ jobs:
       - name: 🌐 Checar portfólio
         shell: bash
         run: |
+          status=0
           for path in "/" "/services"; do
-            curl --fail --location --retry 3 --silent --show-error \
-              --connect-timeout 10 --max-time 30 \
-              "https://bebitterbebetter.com.br${path}" > /dev/null \
-              && echo "✅ ${path}" || { echo "❌ ${path}"; exit 1; }
+            if curl --fail --location --retry 3 --silent --show-error \
+                 --connect-timeout 10 --max-time 30 \
+                 "https://bebitterbebetter.com.br${path}" > /dev/null; then
+              echo "✅ ${path}"
+            else
+              echo "❌ ${path}"
+              status=1
+            fi
           done
+          exit "$status"
